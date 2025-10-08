@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donghua Dailyhub</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      font-size: 20px;
+      color: #4da6ff;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .search-box {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .search-box input {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background: #1f1f1f;
+      color: #fff;
+      border: 1px solid #333;
+    }
+
+    .search-box input:focus {
+      border-color: #4da6ff;
+      box-shadow: 0 0 5px rgba(77,166,255,0.5);
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 4px solid #4da6ff;
+      padding-left: 10px;
+    }
+
+    .donghua-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .donghua-card {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: block;
+    }
+    .donghua-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 10px rgba(77,166,255,0.4);
+    }
+    .donghua-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .donghua-info {
+      padding: 12px;
+    }
+    .donghua-info h3 {
+      font-size: 16px;
+      margin: 0 0 6px 0;
+      color: #4da6ff;
+    }
+    .donghua-info p {
+      font-size: 13px;
+      color: #ccc;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+    a {
+      color: #4da6ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Donghua Dailyhub</h1>
+  </header>
+
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Cari donghua di sini...." />
+    </div>
+
+    <h2 class="section-title">List Donghua</h2>
+
+    <div class="donghua-grid" id="donghuaList">
+
+      <!-- Contoh data (kamu bisa tambah lagi nanti) -->
+      <a href="the-blade-master.html" class="donghua-card" data-title="The Blade Master 1">
+        <img src="https://files.catbox.moe/dphemg.jpg" alt="">
+        <div class="donghua-info">
+          <h3>The Blade Master</h3>
+        </div>
+      </a>
+
+      <a href="battle-through-the-heavens.html" class="donghua-card" data-title="Battle through the heavens">
+        <img src="https://files.catbox.moe/rgvw1t.jpg" alt="">
+        <div class="donghua-info">
+          <h3>Battle through the heavens</h3>
+        </div>
+      </a>
+
+      <a href="throne-of-seal.html" class="donghua-card" data-title="throne of seal">
+        <img src="https://files.catbox.moe/y4f1iw.jpg" alt="">
+        <div class="donghua-info">
+          <h3>Throne of seal</h3>
+        </div>
+      </a>
+
+      <a href="Worls-of-honor.html" class="donghua-card" data-title="World of honor">
+        <img src="https://files.catbox.moe/nee6yn.jpg" alt="">
+        <div class="donghua-info">
+          <h3>World of honor</h3>
+        </div>
+      </a>
+      <a href="under-the-citu.html" class="donghua-card" data-title="under the city">
+        <img src="https://files.catbox.moe/ojcd1p.jpg" alt="">
+        <div class="donghua-info">
+          <h3>A Slash in the Sky</h3>
+        </div>
+      <a href="a-clash-in-the-sky.html" class="donghua-card" data-title="A Slash in the Sky">
+        <img src="https://files.catbox.moe/i8k4m0.jpg" alt="">
+        <div class="donghua-info">
+          <h3>A Slash in the Sky</h3>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+
+  <footer>
+&copy; 2025 Donghua Dailyhub: jika ada kesalahan atau apa silahkan hubungi kami 
+    <a href="https://t.me/donghuadailyhub3d" target="_blank">https://t.me/donghuadailyhub3d</a>
+  </footer>
+
+</body>
+</html>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const donghuaList = document.getElementById("donghuaList");
+    const cards = donghuaList.getElementsByClassName("donghua-card");
+
+    searchInput.addEventListener("keyup", function() {
+      const filter = searchInput.value.toLowerCase();
+      for (let i = 0; i < cards.length; i++) {
+        const title = cards[i].getAttribute("data-title").toLowerCase();
+        if (title.includes(filter)) {
+          cards[i].style.display = "";
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
